@@ -43,7 +43,7 @@ public class Resourcepack extends JavaPlugin implements Listener {
             try {
                 configFile.createNewFile();
                 FileWriter writer = new FileWriter(configFile);
-                writer.write("url: http://127.0.0.1:5000\nid: iJvtF1a5846f");
+                writer.write("url: http://127.0.0.1:5000\nid: 12a5d4asd45");
                 writer.close();
             } catch (IOException e) {
                 getLogger().warning("Failed to create config.yml: " + e.getMessage());
