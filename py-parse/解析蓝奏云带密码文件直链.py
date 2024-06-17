@@ -74,12 +74,13 @@ def get_download_link(_file_id, _file_pws, _file_check_code, _file_download_id):
         print(f"Error: {json_data['inf']}")
 
 def follow_redirects(_url):
+    host = _url.split("://")[1].split("/")[0]
     headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN,zh;q=0.9',
         'Cache-Control': 'no-cache',
-        'Host': 'down-load.lanrar.com',
+        'Host': host,
         'Pragma': 'no-cache',
         'Proxy-Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
