@@ -1,0 +1,11 @@
+name: resourcepack
+version: '${version}'
+main: cn.resourcepack.Resourcepack
+api-version: '1.20'
+commands:
+  getpack:
+    description: 获取资源包下载链接
+    usage: /<command>
+  kit:
+    description: 获取礼包
+    usage: /<command>
