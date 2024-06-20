@@ -43,10 +43,10 @@ async def get_download_url(id):
             download_url = js[3].split('=')[1] + js[5].split('=')[1]
             async with session.get(download_url, headers=headers_real_download_url_get) as real_download_response:
                 real_download_url = await real_download_response.read()
-                download_url_sha1 = hashlib.sha1(real_download_url).hexdigest()
-                t = {str(id):[str(real_download_response.url),str(download_url_sha1),int(time.time())]}
+                download_url_sha256 = hashlib.sha256(real_download_url).hexdigest()
+                t = {str(id):[str(real_download_response.url),str(download_url_sha256),int(time.time())]}
                 gcache.update(**t)
-                return f"{real_download_response.url}#{download_url_sha1}"
+                return f"{real_download_response.url}#{download_url_sha256}"
 
 @app.route('/download_url', methods=['GET'])
 async def get_download_url_route():
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     with open('cache.json','r') as f:
         gcache = {}
         gcache = json.loads(f.read())
-    app.run(debug=True)
+    app.run()
     if gcache != {}:
         with open("cache.json", 'w') as write_f:
             write_f.write(json.dumps(gcache, indent=4, ensure_ascii=False))
